@@ -15,10 +15,6 @@ export default class Options extends React.Component {
           {options}
           <option>Add New Option</option>
         </select>
-        <hr />
-        <button className="btn btn-block btn-primary">Submit</button>
-        <br/>
-        <button className="btn btn-block">Share</button>
       </div>
     );
   }

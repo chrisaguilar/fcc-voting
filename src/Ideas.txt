@@ -1,2 +1,0 @@
-client.js is good to go
-Footer.js is good to go

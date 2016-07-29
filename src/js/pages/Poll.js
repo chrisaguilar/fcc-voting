@@ -3,6 +3,7 @@
 //Use database info to create page
 
 import React from 'react';
+import { Button, ButtonGroup } from 'react-bootstrap';
 
 import PollChart from "../components/layout/Poll/PollChart";
 import Options from "../components/layout/Poll/Options";
@@ -40,6 +41,11 @@ export default class Poll extends React.Component {
         <div className="col-md-6">
           <h2>{this.state.title}</h2>
           <Options options={this.state.poll_options}/>
+          <hr />
+          <ButtonGroup vertical block>
+            <Button bsStyle="primary" href="#">Submit</Button>
+            <Button href="#">Share</Button>
+          </ButtonGroup>
         </div>
         <div className="col-md-6">
           {this.state.chart}
