@@ -1,3 +1,7 @@
+/*
+07/29/16  -  PUT request in handleSubmit works fine, but it doesn't process new options.
+             I also need to rework the state logic, because the chart doesn't reload on state change.
+*/
 import React from 'react';
 import { Row, Col, Button, ButtonGroup } from 'react-bootstrap';
 
@@ -8,6 +12,7 @@ export default class Poll extends React.Component {
   constructor(){
     super();
     this.state = {
+      poll: [],
       title: "",
       poll_options: [],
       chart_data: [],
@@ -25,7 +30,7 @@ export default class Poll extends React.Component {
       let chart_data = poll.data.map(p => p.votes);
       let chart = <PollChart data={chart_data} labels={poll_options}/>
 
-      this.setState({ title, poll_options, chart_data, chart });
+      this.setState({ poll, title, poll_options, chart_data, chart });
 
     }).catch(err => {
       console.log(err);
@@ -33,7 +38,17 @@ export default class Poll extends React.Component {
   }
 
   handleSubmit(val){
-    console.log(val);
+    let pollid = this.props.params.pollid;
+    let newPoll = this.state.poll;
+    newPoll.data.map(d => {if (d.name == val) d.votes++});
+
+    fetch(`/api/polls/${pollid}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newPoll)
+    }).then(response => response.json()).then(poll => {
+      this.setState({poll: newPoll});
+    })
   }
 
   render () {
@@ -57,10 +72,3 @@ export default class Poll extends React.Component {
     );
   }
 }
-
-/*
-Facebook Blue: #3B5998
-Google Plus Red: #DD4B39
-LinkedIn Blue: #0077B5
-Twitter Blue: #1DA1F2
-*/
