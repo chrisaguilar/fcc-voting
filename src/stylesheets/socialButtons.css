@@ -1,0 +1,37 @@
+#facebook, #gplus, #linkedin, #twitter {
+  color: #FFFFFF;
+  font-size: 1.5em;
+  border: none;
+}
+
+#facebook {
+  background-color: #3B5998;
+}
+
+#facebook:hover {
+  background-color: #2A4887;
+}
+
+#gplus {
+  background-color: #DD4B39;
+}
+
+#gplus:hover {
+  background-color: #CC3A28;
+}
+
+#linkedin {
+  background-color: #0077B5;
+}
+
+#linkedin:hover {
+  background-color: #0066a4;
+}
+
+#twitter {
+ background-color: #1DA1F2;
+}
+
+#twitter:hover {
+  background-color: #0C90E1;
+}

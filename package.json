@@ -1,5 +1,5 @@
 {
-  "name": "learning-redux",
+  "name": "fcc-voting",
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
@@ -30,7 +30,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "pack": "webpack",
+    "webpack": "webpack",
     "dev": "webpack-dev-server --content-base src --inline --hot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
