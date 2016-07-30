@@ -1,7 +1,3 @@
-/*
-07/29/16  -  PUT request in handleSubmit works fine, but it doesn't process new options.
-             I also need to rework the state logic, because the chart doesn't reload on state change.
-*/
 import React from 'react';
 import { Row, Col, Button, ButtonGroup } from 'react-bootstrap';
 
@@ -12,29 +8,17 @@ export default class Poll extends React.Component {
   constructor(){
     super();
     this.state = {
-      poll: [],
-      title: "",
-      poll_options: [],
-      chart_data: [],
-      chart: ""
+      poll: {
+        title: "",
+        data: []
+      }
     }
   }
   componentDidMount(){
-    fetch(`/api/polls/${this.props.params.pollid}`).then(response =>
-      response.json()
-    ).then(p => {
-      let poll = p[0];
-      let title = poll.title;
-      poll.data.sort((a,b) => (b.votes - a.votes));
-      let poll_options = poll.data.map(p => p.name);
-      let chart_data = poll.data.map(p => p.votes);
-      let chart = <PollChart data={chart_data} labels={poll_options}/>
-
-      this.setState({ poll, title, poll_options, chart_data, chart });
-
-    }).catch(err => {
-      console.log(err);
-    });
+    fetch(`/api/polls/${this.props.params.pollid}`
+    ).then(response => response.json()
+    ).then(poll => this.setState({ poll: poll[0] })
+    ).catch(err => console.log(err));
   }
 
   handleSubmit(val){
@@ -55,8 +39,8 @@ export default class Poll extends React.Component {
     return (
       <Row>
         <Col md={4} mdOffset={2} sm={8} smOffset={2}>
-          <h2>{this.state.title}</h2>
-          <Options options={this.state.poll_options} handleSubmit={this.handleSubmit.bind(this)}/>
+          <h2>{this.state.poll.title}</h2>
+          <Options data={this.state.poll.data} handleSubmit={this.handleSubmit.bind(this)}/>
           <hr />
           <ButtonGroup justified>
             <Button id="facebook" href="#"><i className="fa fa-facebook"></i></Button>
@@ -66,7 +50,7 @@ export default class Poll extends React.Component {
           </ButtonGroup>
         </Col>
         <Col md={4} mdOffset={0} sm={8} smOffset={2} style={{padding: "2em"}}>
-            {this.state.chart}
+            <PollChart data={this.state.poll.data}/>
         </Col>
       </Row>
     );

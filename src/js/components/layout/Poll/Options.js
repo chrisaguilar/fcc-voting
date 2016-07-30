@@ -19,7 +19,7 @@ export default class Options extends React.Component {
   }
 
   render() {
-    let options = this.props.options.map((o, i) => <option key={i} value={o}>{o}</option>);
+    let options = this.props.data.map((o, i) => <option key={i} value={o.name}>{o.name}</option>);
     return (
       <div>
         <Row>
