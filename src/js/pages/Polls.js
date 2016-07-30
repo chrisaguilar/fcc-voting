@@ -40,7 +40,7 @@ export default class Polls extends React.Component {
     );
     return (
       <Row>
-        <Col md={8} mdOffset={2}>
+        <Col md={8} mdOffset={2} sm={8} smOffset={2}>
           <h2>Polls</h2>
           <ListGroup>
             {poll_list}

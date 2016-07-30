@@ -1,56 +1,61 @@
 import React from 'react';
 import { Row, Col, Button, ButtonGroup } from 'react-bootstrap';
 
-import PollChart from "../components/layout/Poll/PollChart";
 import Options from "../components/layout/Poll/Options";
+import PollChart from "../components/layout/Poll/PollChart";
+import SocialButtons from "../components/layout/Poll/SocialButtons";
 
 export default class Poll extends React.Component {
   constructor(){
     super();
     this.state = {
-      poll: {
-        title: "",
-        data: []
-      }
+      poll: undefined
     }
   }
-  componentDidMount(){
-    fetch(`/api/polls/${this.props.params.pollid}`
-    ).then(response => response.json()
-    ).then(poll => this.setState({ poll: poll[0] })
-    ).catch(err => console.log(err));
+
+  componentDidMount() {
+    fetch(`/api/polls/${this.props.params.pollid}`).then(response =>
+      response.json()
+    ).then(poll => {
+      this.setState({poll: poll[0]});
+    }).catch(err => {
+      console.log(err);
+    });
   }
 
   handleSubmit(val){
     let pollid = this.props.params.pollid;
-    let newPoll = this.state.poll;
-    newPoll.data.map(d => {if (d.name == val) d.votes++});
-
+    let poll = this.state.poll;
+    let filtered = poll.data.filter(d => (d.name === val)).length;
+    filtered > 0 ? poll.data.map(d => {if (d.name == val) d.votes += 1;}) : poll.data.push({name: val, votes: 1});
     fetch(`/api/polls/${pollid}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newPoll)
+      body: JSON.stringify(poll)
     }).then(response => response.json()).then(poll => {
-      this.setState({poll: newPoll});
-    })
+      this.setState({poll});
+    });
   }
 
   render () {
-    return (
+    if (this.state.poll) return (
       <Row>
         <Col md={4} mdOffset={2} sm={8} smOffset={2}>
           <h2>{this.state.poll.title}</h2>
           <Options data={this.state.poll.data} handleSubmit={this.handleSubmit.bind(this)}/>
           <hr />
-          <ButtonGroup justified>
-            <Button id="facebook" href="#"><i className="fa fa-facebook"></i></Button>
-            <Button id="gplus" href="#"><i className="fa fa-google-plus"></i></Button>
-            <Button id="linkedin" href="#"><i className="fa fa-linkedin"></i></Button>
-            <Button id="twitter" href="#"><i className="fa fa-twitter"></i></Button>
-          </ButtonGroup>
+          <SocialButtons url={`https://chrisaguilar-fcc-voting.herokuapp.com/${this.props.params.pollid}`}/>
         </Col>
         <Col md={4} mdOffset={0} sm={8} smOffset={2} style={{padding: "2em"}}>
-            <PollChart data={this.state.poll.data}/>
+          <PollChart data={this.state.poll.data} />
+        </Col>
+      </Row>
+    );
+
+    return (
+      <Row>
+        <Col md={8} mdOffset={2} sm={8} smOffset={2}>
+          <h1>Loading ... </h1>
         </Col>
       </Row>
     );

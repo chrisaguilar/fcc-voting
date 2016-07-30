@@ -14,7 +14,9 @@ export default class Options extends React.Component {
     e.preventDefault();
     let formValue = document.getElementById('options').value;
     let val = (formValue == 'new') ? document.getElementById('newBox').value : formValue;
-    document.getElementById('newBox').value='';
+    if (val == "" || val == "a") return;
+    document.getElementById('options').value='a';
+    this.formChange();
     this.props.handleSubmit(val);
   }
 
