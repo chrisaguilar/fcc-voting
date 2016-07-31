@@ -35,7 +35,7 @@ db.polls.insert([
   },
   {
     author: "Christopher",
-    title: "Modern v Traditional Art",
+    title: "Modern vs Traditional Art",
     data: [
       {name: "Modern", votes: 12},
       {name: "Traditional", votes: 38}
