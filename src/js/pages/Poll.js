@@ -40,13 +40,13 @@ export default class Poll extends React.Component {
   render () {
     if (this.state.poll) return (
       <Row>
-        <Col md={4} mdOffset={2} sm={8} smOffset={2}>
+        <Col md={3} mdOffset={2} sm={8} smOffset={2}>
           <h2>{this.state.poll.title}</h2>
           <Options data={this.state.poll.data} handleSubmit={this.handleSubmit.bind(this)}/>
           <hr />
           <SocialButtons url={`https://chrisaguilar-fcc-voting.herokuapp.com/${this.props.params.pollid}`}/>
         </Col>
-        <Col md={4} mdOffset={0} sm={8} smOffset={2} style={{padding: "2em"}}>
+        <Col md={5} mdOffset={0} sm={8} smOffset={2} style={{padding: "2em"}}>
           <PollChart data={this.state.poll.data} />
         </Col>
       </Row>

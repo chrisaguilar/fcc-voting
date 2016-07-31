@@ -22,7 +22,7 @@ export default class PollChart extends React.Component {
 
     let data             = this.props.data.sort((a,b) => (b.votes - a.votes)),
         colors           = data.map(l => [newNumber(), newNumber(), newNumber()]),
-        backgroundColors = colors.map(c => `rgba(${c[0]}, ${c[1]}, ${c[2]}, 0.2)`),
+        backgroundColors = colors.map(c => `rgba(${c[0]}, ${c[1]}, ${c[2]}, 0.5)`),
         borderColors     = colors.map(c => `rgba(${c[0]}, ${c[1]}, ${c[2]}, 1)`),
         names            = data.map(d => d.name),
         votes            = data.map(d => d.votes);
