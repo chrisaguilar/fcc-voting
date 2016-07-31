@@ -44,7 +44,7 @@ app.post('/api/polls/', function(req, res) {
 * GET SINGLE POLL *
 ******************/
 app.get('/api/polls/:pollid', function(req, res) {
-  db.collection('polls').find({_id: ObjectId(req.params.pollid)}).toArray(function(err, docs) {
+  db.collection('polls').find({_id: req.params.pollid}).toArray(function(err, docs) {
     if (err) console.log(err);
     res.json(docs);
   });
@@ -58,7 +58,7 @@ app.put('/api/polls/:pollid', function(req, res) {
   let poll = req.body;
   // ensure we don't have the _id itself as a field, it's disallowed to modfiy the _id.
   delete (poll._id);
-  let oid = ObjectId(req.params.pollid);
+  let oid = req.params.pollid;
   db.collection('polls').updateOne({_id: oid}, poll, function(err, result) {
     if (err) console.log(err);
     db.collection('polls').find({_id: oid}).next(function(err, doc) {

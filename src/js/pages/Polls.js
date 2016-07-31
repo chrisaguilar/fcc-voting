@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Row, Col, ListGroup, ListGroupItem, Glyphicon, Button, Modal } from 'react-bootstrap';
+import { Grid, Row, Col, ListGroup, ListGroupItem, Glyphicon, Button, Modal } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import shortid from 'shortid';
 
-//import AddPoll from '../components/AddPoll.js'
+import NewPollModal from '../components/layout/Polls/NewPollModal';
 
 export default class Polls extends React.Component {
   constructor(){
     super();
     this.state = {
-      polls: [],
-      showModal: false
+      polls: []
     }
   }
 
@@ -24,12 +24,23 @@ export default class Polls extends React.Component {
     });
   }
 
-  close() {
-    this.setState({ showModal: false });
-  }
-
-  open() {
-    this.setState({ showModal: true });
+  add(title, options) {
+    let newPoll = {
+      _id: shortid.generate(),
+      author: "Christopher",
+      title: title,
+      data: options.split(',').map(o => {return {name: o.toString().trim(), votes: 0}})
+    };
+    fetch('/api/polls', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newPoll)
+    }).then(res => res.json()).then(poll => {
+      const modifiedPolls = this.state.polls.concat([poll]);
+      this.setState({ polls: modifiedPolls });
+    }).catch(err => {
+      console.log("Error adding poll:", err);
+    })
   }
 
   render() {
@@ -44,24 +55,8 @@ export default class Polls extends React.Component {
           <h2>Polls</h2>
           <ListGroup>
             {poll_list}
-            <ListGroupItem className="text-center"style={{padding: "0"}}>
-              <Button bsStyle="primary" block style={{borderTopRightRadius: "0", borderTopLeftRadius: "0"}} onClick={this.open.bind(this)}>
-                <Glyphicon glyph="plus" />
-              </Button>
-            </ListGroupItem>
+            <NewPollModal add={this.add.bind(this)}/>
           </ListGroup>
-
-          <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
-            <Modal.Header closeButton>
-              <Modal.Title>Modal heading</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <h1>Hello, World</h1>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button onClick={this.close.bind(this)}>Close</Button>
-            </Modal.Footer>
-          </Modal>
         </Col>
       </Row>
     );

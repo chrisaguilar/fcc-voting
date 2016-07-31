@@ -6,22 +6,7 @@ db.polls.remove({});
 
 db.polls.insert([
   {
-    author: "Christopher",
-    title: "ES2015 vs ES6",
-    data: [
-      {name: "ES2015", votes: 5},
-      {name: "ES6", votes: 4}
-    ]
-  },
-  {
-    author: "Christopher",
-    title: "'MEEM' vs 'MAYMAY'",
-    data: [
-      {name: "MEEM", votes: 15},
-      {name: "MAYMAY", votes: 2}
-    ]
-  },
-  {
+    _id: "2WEKaVNO",
     author: "Christopher",
     title: "Favorite Color",
     data: [
@@ -34,6 +19,7 @@ db.polls.insert([
     ]
   },
   {
+    _id: "7oet_d9Z",
     author: "Christopher",
     title: "Modern vs Traditional Art",
     data: [
@@ -42,6 +28,7 @@ db.polls.insert([
     ]
   },
   {
+    _id: "dogPzIz8",
     author: "Christopher",
     title: "Preferred Art Type",
     data: [
@@ -52,6 +39,7 @@ db.polls.insert([
     ]
   },
   {
+    _id: "dBvJIh-H",
     author: "Christopher",
     title: "Favorite Class",
     data: [
@@ -66,6 +54,7 @@ db.polls.insert([
     ]
   },
   {
+    _id: "46Juzcyx",
     author: "Christopher",
     title: "Favorite Website",
     data: [
@@ -75,6 +64,24 @@ db.polls.insert([
       {name: "YouTube", votes: 6},
       {name: "Pinterest", votes: 4},
       {name: "Tumblr", votes: 8}
+    ]
+  },
+  {
+    _id: "eWRhpRV",
+    author: "Christopher",
+    title: "ES2015 vs ES6",
+    data: [
+      {name: "ES2015", votes: 5},
+      {name: "ES6", votes: 4}
+    ]
+  },
+  {
+    _id: "23TplPdS",
+    author: "Christopher",
+    title: "'MEEM' vs 'MAYMAY'",
+    data: [
+      {name: "MEEM", votes: 15},
+      {name: "MAYMAY", votes: 2}
     ]
   }
 ]);
