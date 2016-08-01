@@ -56,15 +56,23 @@ app.get('/api/polls/:pollid', function(req, res) {
 ****************/
 app.put('/api/polls/:pollid', function(req, res) {
   let poll = req.body;
-  // ensure we don't have the _id itself as a field, it's disallowed to modfiy the _id.
-  delete (poll._id);
-  let oid = req.params.pollid;
-  db.collection('polls').updateOne({_id: oid}, poll, function(err, result) {
-    if (err) console.log(err);
-    db.collection('polls').find({_id: oid}).next(function(err, doc) {
+  db.collection('polls').updateOne({_id: poll._id}, {$set: {data: poll.data}}, function(err, r) {
+    assert.equal(null, err);
+    db.collection('polls').find({_id: poll._id}).next(function(err, doc) {
       if (err) console.log(err);
       res.send(doc);
     });
+  });
+});
+
+/****************
+* DELETE A POLL *
+****************/
+app.delete('/api/polls/:pollid', function(req, res) {
+  let pollid = req.params.pollid;
+  db.collection('polls').deleteOne( {_id: pollid}, function(err, r) {
+    asset.equal(null, err);
+    assert.equal(1, r.deletedCount);
   });
 });
 
