@@ -1,31 +1,30 @@
-var debug = process.env.NODE_ENV !== "production";
-var webpack = require('webpack');
-var path = require('path');
+var webpack = require('webpack'),
+    path    = require('path');
 
-module.exports = {
-  context: path.join(__dirname, "src"),
-  devtool: debug ? "inline-sourcemap" : null,
-  entry: "./js/client.js",
+var BUILD_DIR = path.resolve(__dirname, 'public'),
+    APP_DIR   = path.resolve(__dirname, 'app');
+
+var config = {
+  context: process.cwd(),
+  entry: APP_DIR + '/client.js',
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015', 'stage-0'],
-          plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
-        }
+        test: /\.jsx?/,
+        include : APP_DIR,
+        loader: 'babel'
       }
     ]
   },
   output: {
-    path: __dirname + "/src/",
-    filename: "client.min.js"
+    path: BUILD_DIR,
+    filename: 'client.min.js'
   },
-  plugins: debug ? [] : [
+  plugins: [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
-  ],
+    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false })
+  ]
 };
+
+module.exports = config;

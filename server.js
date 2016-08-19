@@ -1,86 +1,35 @@
-const assert     = require('assert'),
-      bodyParser = require('body-parser'),
-      express    = require('express'),
-      mongo      = require('mongodb').MongoClient,
-      ObjectId   = require('mongodb').ObjectId,
-      path       = require('path'),
-      shortid    = require('shortid'),
-      app        = express(),
-      port       = process.env.PORT || 8080;
+const bodyParser = require('body-parser'),
+      express  = require('express'),
+      mongoose = require('mongoose'),
+      passport = require('passport'),
+      path     = require('path'),
+      routes   = require('./app/routes/routes'),
+      session  = require('express-session'),
+      setInitialData = require('./app/data/setInitialData');
 
-let db;
+const app  = express(),
+      port = process.env.PORT || 8080;
 
-app.use(express.static(path.join(__dirname, 'src')));
+require('dotenv').load();
+require('./app/config/passport')(passport);
 
+mongoose.connect(process.env.MONGO_URI);
+setInitialData.setData();
 
-/****************
-* GET ALL POLLS *
-****************/
-app.get('/api/polls', function(req, res) {
-  db.collection('polls').find().toArray(function(err, docs) {
-    res.json(docs);
-  });
-});
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'app')));
 
+app.use(session({
+  secret: process.env.GITHUB_SECRET,
+  resave: false,
+  saveUninitialized: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(bodyParser.json());
-/****************
-* INSERT A POLL *
-****************/
-app.post('/api/polls/', function(req, res) {
-  let newPoll = req.body;
-  db.collection('polls').insertOne(newPoll, function(err, result) {
-    if (err) console.log(err);
-    let newId = result.insertedId;
-    db.collection('polls').find({_id: newId}).next(function(err, doc) {
-      if (err) console.log(err);
-      res.json(doc);
-    });
-  });
-});
 
+routes(app, passport);
 
-/******************
-* GET SINGLE POLL *
-******************/
-app.get('/api/polls/:pollid', function(req, res) {
-  db.collection('polls').find({_id: req.params.pollid}).toArray(function(err, docs) {
-    if (err) console.log(err);
-    res.json(docs);
-  });
-});
-
-
-/****************
-* UPDATE A POLL *
-****************/
-app.put('/api/polls/:pollid', function(req, res) {
-  let poll = req.body;
-  db.collection('polls').updateOne({_id: poll._id}, {$set: {data: poll.data}}, function(err, r) {
-    assert.equal(null, err);
-    db.collection('polls').find({_id: poll._id}).next(function(err, doc) {
-      if (err) console.log(err);
-      res.send(doc);
-    });
-  });
-});
-
-/****************
-* DELETE A POLL *
-****************/
-app.delete('/api/polls/:pollid', function(req, res) {
-  let pollid = req.params.pollid;
-  db.collection('polls').deleteOne( {_id: pollid}, function(err, r) {
-    asset.equal(null, err);
-    assert.equal(1, r.deletedCount);
-  });
-});
-
-
-/**************************
-* CONNECT TO THE DATABASE *
-**************************/
-mongo.connect('mongodb://localhost/polldb', function(err, dbConnection) {
-  db = dbConnection;
-  app.listen(port, () => console.log("Listening on port", port));
-});
+app.listen(port, () => console.log(`Listening on port ${port} ...`));

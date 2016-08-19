@@ -1,0 +1,60 @@
+.login {
+  border: none;
+  border-radius: 5px;
+  color: #FFFFFF;
+  font-weight: bold;
+  margin: 0.25em 0;
+  padding: 1em;
+  text-align: center;
+  width: 100%;
+}
+
+.share {
+  color: #FFFFFF;
+  font-size: 1.5em;
+  border: none;
+}
+
+.share:hover, .login:hover {
+  color: #FFFFFF;
+}
+
+#facebook {
+  background-color: #3B5998;
+}
+
+#facebook:hover {
+  background-color: #2A4887;
+}
+
+#github {
+  background-color: #333;
+}
+
+#github:hover {
+  background-color: #222;
+}
+
+#gplus {
+  background-color: #DD4B39;
+}
+
+#gplus:hover {
+  background-color: #CC3A28;
+}
+
+#linkedin {
+  background-color: #0077B5;
+}
+
+#linkedin:hover {
+  background-color: #0066a4;
+}
+
+#twitter {
+ background-color: #1DA1F2;
+}
+
+#twitter:hover {
+  background-color: #0C90E1;
+}
