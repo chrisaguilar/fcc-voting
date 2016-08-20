@@ -47,8 +47,10 @@ export default class Poll extends React.Component {
   render () {
     if (this.state.poll) return (
       <Row>
+        <Col xs={12} className="text-center">
+          <h2 style={{"margin-top": "0", "margin-bottom": "30"}}><strong>{this.state.poll.title}</strong></h2>
+        </Col>
         <Col md={3} mdOffset={2} sm={8} smOffset={2}>
-          <h2>{this.state.poll.title}</h2>
           <Options data={this.state.poll.data} handleSubmit={this.handleSubmit} isLoggedIn={this.props.isLoggedIn} user={this.props.user}/>
           <hr />
           <h3 className="text-center">Share On</h3>
@@ -56,19 +58,19 @@ export default class Poll extends React.Component {
           <br />
           {
             this.props.user ? (
-              (this.props.user._id == this.state.poll.author) ?
-                (<Button
-                  bsStyle="danger"
-                  href="/"
-                  onClick={this.delete}
-                  style={{width: "100%"}}>
-                    <strong><Glyphicon glyph="trash" /> Delete</strong>
-                </Button>
-              ) : (null)
+            (this.props.user._id == this.state.poll.author) ?
+              (<Button
+                bsStyle="danger"
+                href="/"
+                onClick={this.delete}
+                style={{width: "100%"}}>
+                <strong><Glyphicon glyph="trash" /> Delete</strong>
+              </Button>
+            ) : (null)
             ) : (null)
           }
         </Col>
-        <Col md={5} mdOffset={0} sm={8} smOffset={2} style={{padding: "2em"}}>
+        <Col md={5} mdOffset={0} sm={8} smOffset={2} style={{padding: "0em 2em 2em 2em"}}>
           <PollChart data={this.state.poll.data} />
         </Col>
       </Row>

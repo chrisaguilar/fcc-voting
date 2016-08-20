@@ -34,13 +34,13 @@ export default class Home extends React.Component {
       </LinkContainer>
     );
     return (
-      <Row>
+      <Row className="text-center">
         <Col md={8} mdOffset={2} sm={8} smOffset={2}>
-          <h2>Polls</h2>
+          <h1><strong>Free Code Camp Polls</strong></h1>
           <ListGroup>
             {!(this.state.polls == []) ?
               (
-                poll_list
+              poll_list
               ) : (
                 <ListGroupItem>
                   <h2>Loading Polls ...</h2>

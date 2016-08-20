@@ -74,10 +74,10 @@ const initialData = [
   {
     "_id": "23TplPdS",
     "author": "server",
-    "title": "'MEEM' vs 'MAYMAY'",
+    "title": "Cats vs Dogs",
     "data": [
-      {"name": "MEEM", "votes": 15},
-      {"name": "MAYMAY", "votes": 2}
+      {"name": "Cats", "votes": 10},
+      {"name": "Dogs", "votes": 8}
     ]
   }
 ]
