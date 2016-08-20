@@ -21,14 +21,14 @@ export default class SocialButtons extends React.Component {
         </Button>
         <Button
           id="linkedin"
-          href={`https://www.linkedin.com/shareArticle?mini=true&url=https%3A//chrisaguilar-fcc-voting.herokuapp.com/poll/${this.props.url}&title=Free%20Code%20Camp%20Voting%20App&summary=&source=`}
+          href={`https://www.linkedin.com/shareArticle?mini=true&url=${this.props.url}&title=Free%20Code%20Camp%20Voting%20App&summary=&source=`}
           target="_blank"
           className="share">
             <i className="fa fa-linkedin"></i>
         </Button>
         <Button
           id="twitter"
-          href="https://twitter.com/home?status=Check%20out%20this%20%40FreeCodeCamp%20voting%20app%20https%3A//chrisaguilar-fcc-voting.herokuapp.com/%20%23JavaScript%20%23LearnToCode"
+          href={`https://twitter.com/home?status=Check%20out%20this%20%40FreeCodeCamp%20voting%20app%20${this.props.url}%20%23JavaScript%20%23LearnToCode`}
           target="_blank"
           className="share">
             <i className="fa fa-twitter"></i>

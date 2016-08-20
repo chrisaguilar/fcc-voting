@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ButtonGroup, Col, Grid, Modal, NavItem, Row } from 'react-bootstrap';
+import { Button, ButtonGroup, Col, Grid, MenuItem, Modal, NavItem, NavDropdown, Row } from 'react-bootstrap';
 
 export default class Login extends React.Component {
   constructor() {
@@ -22,28 +22,13 @@ export default class Login extends React.Component {
 
   render() {
     return (
-      <NavItem onClick={this.open}>
-        Login
-        <Modal bsSize="small" show={this.state.showModal} onHide={this.close}>
-          <Modal.Header closeButton>
-            <Modal.Title className="text-center">Login</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Button id="facebook" href="/auth/facebook" className="login">
-              <i className="fa fa-facebook"></i><br />Facebook
-            </Button>
-            <Button id="github" href="/auth/github" className="login">
-              <i className="fa fa-github"></i><br />GitHub
-            </Button>
-            <Button id="gplus" href="/auth/gplus" className="login">
-                <i className="fa fa-google-plus"></i><br />Google+
-            </Button>
-            <Button id="twitter" href="/auth/twitter" className="login">
-                <i className="fa fa-twitter"></i><br />Twitter
-            </Button>
-          </Modal.Body>
-        </Modal>
-      </NavItem>
+      <NavDropdown title="Login" id="nav-dropdown">
+        <MenuItem header>Login via</MenuItem>
+        <MenuItem href="/auth/facebook"><i className="fa fa-facebook"></i> Facebook</MenuItem>
+        <MenuItem href="/auth/github"><i className="fa fa-github"></i> GitHub</MenuItem>
+        <MenuItem href="/auth/google"><i className="fa fa-google"></i> Google</MenuItem>
+        <MenuItem href="/auth/twitter"><i className="fa fa-twitter"></i> Twitter</MenuItem>
+      </NavDropdown>
     );
   }
 }

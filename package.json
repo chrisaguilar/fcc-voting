@@ -1,11 +1,15 @@
 {
   "name": "fcc-voting",
   "version": "1.0.0",
-  "description": "",
+  "description": "Christopher Aguilar's FCC Voting App",
+  "engines": {
+    "node": "6.4.0"
+  },
   "main": "server.js",
   "scripts": {
     "build": "webpack",
     "dev": "webpack --progress --colors --watch",
+    "dev-server": "webpack-dev-server --content-base public/ --colors --hot --inline --history-api-fallback",
     "start": "node server.js"
   },
   "keywords": [],
@@ -19,10 +23,11 @@
     "express": "^4.14.0",
     "express-session": "^1.14.0",
     "mongoose": "^4.5.9",
+    "npm": "^3.10.6",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "passport-github": "^1.1.0",
-    "passport-google-oauth": "^1.0.0",
+    "passport-google-oauth20": "^1.0.0",
     "passport-twitter": "^1.0.4",
     "react": "^15.3.0",
     "react-bootstrap": "^0.30.2",
@@ -42,5 +47,13 @@
     "babel-preset-stage-0": "^6.5.0",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisaguilar/fcc-voting.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chrisaguilar/fcc-voting/issues"
+  },
+  "homepage": "https://chrisaguilar-fcc-voting.herokuapp.com"
 }

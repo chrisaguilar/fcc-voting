@@ -17,6 +17,7 @@ export default class Layout extends React.Component {
   componentWillMount() {
     axios('/verifyAuth').then(response => {
       this.setState({ isLoggedIn: response.data.isLoggedIn, user: response.data.user });
+      console.log(response.data.user);
     });
   }
 

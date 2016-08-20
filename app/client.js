@@ -12,9 +12,9 @@ const app = document.getElementById('app');
 ReactDOM.render(
   <Router history={browserHistory}>
     <Route path="/" component={Master}>
-      <IndexRoute component={Home}></IndexRoute>
-      <Route path="poll/:pollid*" name="poll" component={Poll}></Route>
-      <Route path="user/:userid*" name="user" component={User}></Route>
+      <IndexRoute component={Home} />
+      <Route path="poll/:pollid*" component={Poll} />
+      <Route path="user/:userid*" component={User} />
     </Route>
   </Router>,
 app);

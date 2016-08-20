@@ -16,7 +16,7 @@ export default class Poll extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     axios
       .get(`/api/polls/${this.props.params.pollid}`)
       .then(response => { this.setState({ poll: response.data });})
@@ -51,6 +51,7 @@ export default class Poll extends React.Component {
           <h2>{this.state.poll.title}</h2>
           <Options data={this.state.poll.data} handleSubmit={this.handleSubmit} isLoggedIn={this.props.isLoggedIn} user={this.props.user}/>
           <hr />
+          <h3 className="text-center">Share On</h3>
           <SocialButtons url={`https://chrisaguilar-fcc-voting.herokuapp.com/${this.props.params.pollid}`}/>
           <br />
           {

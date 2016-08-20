@@ -4,8 +4,7 @@ const bodyParser = require('body-parser'),
       passport = require('passport'),
       path     = require('path'),
       routes   = require('./app/routes/routes'),
-      session  = require('express-session'),
-      setInitialData = require('./app/data/setInitialData');
+      session  = require('express-session');
 
 const app  = express(),
       port = process.env.PORT || 8080;
@@ -14,10 +13,9 @@ require('dotenv').load();
 require('./app/config/passport')(passport);
 
 mongoose.connect(process.env.MONGO_URI);
-setInitialData.setData();
+require('./app/data/setInitialData').setData();
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'app')));
+app.use(express.static(process.cwd()));
 
 app.use(session({
   secret: process.env.GITHUB_SECRET,

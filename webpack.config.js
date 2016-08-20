@@ -6,7 +6,9 @@ var BUILD_DIR = path.resolve(__dirname, 'public'),
 
 var config = {
   context: process.cwd(),
-  entry: APP_DIR + '/client.js',
+  entry: {
+    app: [APP_DIR + '/client.js']
+  },
   module: {
     loaders: [
       {
@@ -18,12 +20,13 @@ var config = {
   },
   output: {
     path: BUILD_DIR,
+    publicPath: '/public/',
     filename: 'client.min.js'
   },
   plugins: [
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false })
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false, compress: {warnings: false} })
   ]
 };
 

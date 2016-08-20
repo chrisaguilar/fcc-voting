@@ -28,7 +28,7 @@ export default class User extends React.Component {
     return (
       <Row>
         <Col sm={12} md={8} mdOffset={2}>
-          <h2>{this.props.user.github.displayName || "Anon"}'s Polls</h2>
+          <h2>Polls You've Created</h2>
           <ListGroup>
             {list_items}
           </ListGroup>
