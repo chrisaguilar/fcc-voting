@@ -50,7 +50,7 @@ export default class Poll extends React.Component {
         <Col className="text-center">
           <h2><strong>{this.state.poll.title}</strong></h2>
         </Col>
-        <Col md={3} mdOffset={2} sm={8} smOffset={2} style={{marginTop: "2em"}}>
+        <Col md={4} mdOffset={2} sm={8} smOffset={2} style={{marginTop: "2em"}}>
           <Options data={this.state.poll.data} handleSubmit={this.handleSubmit} isLoggedIn={this.props.isLoggedIn} user={this.props.user}/>
           <hr />
           <h3 className="text-center">Share On</h3>
@@ -70,7 +70,7 @@ export default class Poll extends React.Component {
             ) : (null)
           }
         </Col>
-        <Col md={5} mdOffset={0} sm={8} smOffset={2} style={{marginTop: "2em", padding: "0em 2em 2em 2em"}}>
+        <Col md={4} mdOffset={0} sm={8} smOffset={2} style={{marginTop: "2em", padding: "0em 2em 2em 2em"}}>
           <PollChart data={this.state.poll.data} />
         </Col>
       </Row>

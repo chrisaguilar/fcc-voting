@@ -24,22 +24,18 @@ export default class Options extends React.Component {
     let options = this.props.data.map((o, i) => <option key={i} value={o.name}>{o.name}</option>);
     return (
       <div>
-        <Row>
-          <InputGroup>
-            <FormControl componentClass="select" id="options" defaultValue="a" onChange={this.formChange.bind(this)}>
-              <option value="a" style={{display:"none"}}>Cast Your Vote</option>
-              {options}
-              {this.props.isLoggedIn ? (<option value="new">Add New Option</option>) : (null)}
-            </FormControl>
-            <InputGroup.Button>
-              <Button bsStyle="primary" onClick={this.handleSubmit.bind(this)}>Submit</Button>
-            </InputGroup.Button>
-          </InputGroup>
-        </Row>
-        <Row>
-          <br/>
-          <FormControl id="newBox" type="text" placeholder="Enter New Option" style={{visibility: "hidden"}}/>
-        </Row>
+        <InputGroup>
+          <FormControl componentClass="select" id="options" defaultValue="a" onChange={this.formChange.bind(this)}>
+            <option value="a" style={{display:"none"}}>Cast Your Vote</option>
+            {options}
+            {this.props.isLoggedIn ? (<option value="new">Add New Option</option>) : (null)}
+          </FormControl>
+          <InputGroup.Button>
+            <Button bsStyle="primary" onClick={this.handleSubmit.bind(this)}>Submit</Button>
+          </InputGroup.Button>
+        </InputGroup>
+        <br/>
+        <FormControl id="newBox" type="text" placeholder="Enter New Option" style={{visibility: "hidden"}}/>
       </div>
     );
   }
