@@ -34,24 +34,30 @@ export default class Home extends React.Component {
       </LinkContainer>
     );
     return (
-      <Row className="text-center">
-        <Col md={8} mdOffset={2} sm={8} smOffset={2}>
-          <h1><strong>Free Code Camp Polls</strong></h1>
-          <h3>All Polls</h3>
-          <ListGroup style={{marginTop: "2em"}}>
-            {!(this.state.polls == []) ?
-              (
-              poll_list
-              ) : (
-                <ListGroupItem>
-                  <h2>Loading Polls ...</h2>
-                </ListGroupItem>
-              )
-            }
-            <NewPollModal isLoggedIn={this.props.isLoggedIn} user={this.props.user} refresh={this.getPolls}/>
-          </ListGroup>
-        </Col>
-      </Row>
+      <Grid className="text-center">
+        <Row>
+          <Col xs={12}>
+            <h1><strong>Free Code Camp Polls</strong></h1>
+            <h3>All Polls</h3>
+          </Col>
+        </Row>
+        <Row>
+          <Col sm={8} smOffset={2}>
+            <ListGroup style={{marginTop: "2em"}}>
+              {!(this.state.polls == []) ?
+                (
+                poll_list
+                ) : (
+                  <ListGroupItem>
+                    <h2>Loading Polls ...</h2>
+                  </ListGroupItem>
+                )
+              }
+              <NewPollModal isLoggedIn={this.props.isLoggedIn} user={this.props.user} refresh={this.getPolls}/>
+            </ListGroup>
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }

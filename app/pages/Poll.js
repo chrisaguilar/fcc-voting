@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Button, ButtonGroup, Glyphicon } from 'react-bootstrap';
+import { Grid, Row, Col, Button, ButtonGroup, Glyphicon } from 'react-bootstrap';
 import axios from 'axios';
 
 import Options from "../components/Poll/Options";
@@ -46,34 +46,38 @@ export default class Poll extends React.Component {
 
   render () {
     if (this.state.poll) return (
-      <Row>
-        <Col xs={12} className="text-center">
-          <h2><strong>{this.state.poll.title}</strong></h2>
-        </Col>
-        <Col md={3} mdOffset={2} sm={8} smOffset={2} style={{marginTop: "2em"}}>
-          <Options data={this.state.poll.data} handleSubmit={this.handleSubmit} isLoggedIn={this.props.isLoggedIn} user={this.props.user}/>
-          <hr />
-          <h3 className="text-center">Share On</h3>
-          <SocialButtons url={`https://chrisaguilar-fcc-voting.herokuapp.com/${this.props.params.pollid}`}/>
-          <br />
-          {
-            this.props.user ? (
-            (this.props.user._id == this.state.poll.author) ?
-              (<Button
-                bsStyle="danger"
-                href="/"
-                onClick={this.delete}
-                style={{width: "100%"}}>
-                <strong><Glyphicon glyph="trash" /> Delete</strong>
-              </Button>
-            ) : (null)
-            ) : (null)
-          }
-        </Col>
-        <Col md={5} mdOffset={0} sm={8} smOffset={2} style={{marginTop: "2em", padding: "0em 2em 2em 2em"}}>
-          <PollChart data={this.state.poll.data} />
-        </Col>
-      </Row>
+      <Grid>
+        <Row>
+          <Col xs={12} className="text-center">
+            <h2><strong>{this.state.poll.title}</strong></h2>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={3} mdOffset={2} sm={8} smOffset={2} style={{marginTop: "2em"}}>
+            <Options data={this.state.poll.data} handleSubmit={this.handleSubmit} isLoggedIn={this.props.isLoggedIn} user={this.props.user}/>
+            <hr />
+            <h3 className="text-center">Share On</h3>
+            <SocialButtons url={`https://chrisaguilar-fcc-voting.herokuapp.com/${this.props.params.pollid}`}/>
+            <br />
+            {
+              this.props.user ? (
+              (this.props.user._id == this.state.poll.author) ?
+                (<Button
+                  bsStyle="danger"
+                  href="/"
+                  onClick={this.delete}
+                  style={{width: "100%"}}>
+                  <strong><Glyphicon glyph="trash" /> Delete</strong>
+                </Button>
+              ) : (null)
+              ) : (null)
+            }
+          </Col>
+          <Col md={5} mdOffset={0} sm={8} smOffset={2} style={{marginTop: "2em", padding: "0em 2em 2em 2em"}}>
+            <PollChart data={this.state.poll.data} />
+          </Col>
+        </Row>
+      </Grid>
     );
 
     return (
