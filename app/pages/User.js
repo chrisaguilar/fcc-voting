@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
+import { Grid, Col, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import axios from 'axios';
 
@@ -56,23 +56,29 @@ export default class User extends React.Component {
     );
 
     return (
-      <Row className="text-center">
-        <Col md={8} mdOffset={2} sm={8} smOffset={2}>
-          <h1><strong>Free Code Camp Polls</strong></h1>
-          <h3>Polls You Own</h3>
-          <ListGroup style={{marginTop: "2em"}}>
-            {(list_items.length == 0) ?
-              (
-                <ListGroupItem>
-                  You don't currently own any polls. <br /> <br /> Click the button below to make one!
-                </ListGroupItem>
-              ) : (
-                list_items
-            )}
-            <NewPollModal isLoggedIn={this.props.isLoggedIn} user={this.props.user} refresh={this.getPolls}/>
-          </ListGroup>
-        </Col>
-      </Row>
+      <Grid className="text-center">
+        <Row>
+          <Col xs={12}>
+            <h1><strong>Free Code Camp Polls</strong></h1>
+            <h3>Polls You Own</h3>
+          </Col>
+        </Row>
+        <Row>
+          <Col sm={8} smOffset={2}>
+            <ListGroup style={{marginTop: "2em"}}>
+              {(list_items.length == 0) ?
+                (
+                  <ListGroupItem>
+                    You don't currently own any polls. <br /> <br /> Click the button below to make one!
+                  </ListGroupItem>
+                ) : (
+                  list_items
+              )}
+              <NewPollModal isLoggedIn={this.props.isLoggedIn} user={this.props.user} refresh={this.getPolls}/>
+            </ListGroup>
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }
