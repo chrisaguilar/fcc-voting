@@ -9,7 +9,7 @@ export default class Head extends React.Component {
   render () {
     return (
       <Row>
-        <Col md={8} mdOffset={2} sm={12}>
+        <Col sm={8} smOffset={2}>
           <Navbar fluid>
             <Navbar.Header>
               <Navbar.Brand>

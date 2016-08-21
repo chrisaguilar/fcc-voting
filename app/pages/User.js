@@ -56,15 +56,12 @@ export default class User extends React.Component {
     );
 
     return (
-      <Grid className="text-center">
-        <Row>
-          <Col xs={12}>
-            <h1><strong>Free Code Camp Polls</strong></h1>
-            <h3>Polls You Own</h3>
-          </Col>
-        </Row>
-        <Row>
-          <Col sm={8} smOffset={2}>
+      <Row className="text-center">
+        <Col>
+          <h1><strong>Free Code Camp Polls</strong></h1>
+          <h3>Polls You Own</h3>
+        </Col>
+        <Col sm={8} smOffset={2}>
             <ListGroup style={{marginTop: "2em"}}>
               {(list_items.length == 0) ?
                 (
@@ -77,8 +74,7 @@ export default class User extends React.Component {
               <NewPollModal isLoggedIn={this.props.isLoggedIn} user={this.props.user} refresh={this.getPolls}/>
             </ListGroup>
           </Col>
-        </Row>
-      </Grid>
+      </Row>
     );
   }
 }

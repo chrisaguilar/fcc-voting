@@ -5,7 +5,7 @@ export default class Footer extends React.Component {
   render () {
     return (
       <Row style={{marginTop: "2em", marginBottom: "2em"}}>
-        <Col md={8} mdOffset={2} sm={8} smOffset={2}>
+        <Col sm={8} smOffset={2}>
           <footer>
             Created by <a href="https://chrisaguilar.github.io/" target="_blank">Christopher Aguilar</a>
             <br />

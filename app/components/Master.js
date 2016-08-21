@@ -22,7 +22,7 @@ export default class Layout extends React.Component {
 
   render() {
     return (
-      <Grid>
+      <Grid fluid>
         <Header isLoggedIn={this.state.isLoggedIn} user={this.state.user}/>
         {React.cloneElement(this.props.children, { isLoggedIn: this.state.isLoggedIn, user: this.state.user })}
         <Footer />
