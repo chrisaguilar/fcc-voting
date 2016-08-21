@@ -7,7 +7,8 @@ export default class About extends React.Component {
       <Grid>
         <Row>
           <Col xs={12} className="text-center">
-            <h2>About</h2>
+            <h1><strong>Free Code Camp Polls</strong></h1>
+            <h3>About</h3>
           </Col>
         </Row>
         <Row>
