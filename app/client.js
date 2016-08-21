@@ -14,7 +14,7 @@ ReactDOM.render(
     <Route path="/" component={Master}>
       <IndexRoute component={Home} />
       <Route path="poll/:pollid*" component={Poll} />
-      <Route path="user/:userid*" component={User} />
+      <Route path="user" component={User} />
     </Route>
   </Router>,
 app);

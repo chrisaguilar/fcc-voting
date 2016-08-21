@@ -48,9 +48,9 @@ export default class Poll extends React.Component {
     if (this.state.poll) return (
       <Row>
         <Col xs={12} className="text-center">
-          <h2 style={{"margin-top": "0", "margin-bottom": "30"}}><strong>{this.state.poll.title}</strong></h2>
+          <h2><strong>{this.state.poll.title}</strong></h2>
         </Col>
-        <Col md={3} mdOffset={2} sm={8} smOffset={2}>
+        <Col md={3} mdOffset={2} sm={8} smOffset={2} style={{marginTop: "2em"}}>
           <Options data={this.state.poll.data} handleSubmit={this.handleSubmit} isLoggedIn={this.props.isLoggedIn} user={this.props.user}/>
           <hr />
           <h3 className="text-center">Share On</h3>
@@ -70,7 +70,7 @@ export default class Poll extends React.Component {
             ) : (null)
           }
         </Col>
-        <Col md={5} mdOffset={0} sm={8} smOffset={2} style={{padding: "0em 2em 2em 2em"}}>
+        <Col md={5} mdOffset={0} sm={8} smOffset={2} style={{marginTop: "2em", padding: "0em 2em 2em 2em"}}>
           <PollChart data={this.state.poll.data} />
         </Col>
       </Row>
@@ -78,7 +78,7 @@ export default class Poll extends React.Component {
 
     return (
       <Row>
-        <Col md={8} mdOffset={2} sm={8} smOffset={2}>
+        <Col xs={12} className="text-center">
           <h2>Loading ... </h2>
         </Col>
       </Row>

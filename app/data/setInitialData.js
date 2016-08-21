@@ -17,21 +17,28 @@ const initialData = [
   {
     "_id": "7oet_d9Z",
     "author": "server",
-    "title": "Modern vs Traditional Art",
+    "title": "How often do you program?",
     "data": [
-      {"name": "Modern", "votes": 12},
-      {"name": "Traditional", "votes": 38}
+      {"name": "Seldom", "votes": 9},
+      {"name": "Yearly", "votes": 8},
+      {"name": "Daily", "votes": 15},
+      {"name": "Never", "votes": 20},
+      {"name": "Weekly", "votes": 8},
+      {"name": "Often", "votes": 22},
+      {"name": "Monthly", "votes": 18}
     ]
   },
   {
     "_id": "dogPzIz8",
     "author": "server",
-    "title": "Preferred Art Type",
+    "title": "What continent do you live on?",
     "data": [
-      {"name": "Asian", "votes": 3},
-      {"name": "American", "votes": 24},
-      {"name": "African", "votes": 4},
-      {"name": "European", "votes": 19}
+      {"name": "North America", "votes": 22},
+      {"name": "South America", "votes": 28},
+      {"name": "Africa", "votes": 7},
+      {"name": "Europe", "votes": 26},
+      {"name": "Australia", "votes": 4},
+      {"name": "Asia", "votes": 13}
     ]
   },
   {
@@ -44,7 +51,8 @@ const initialData = [
       {"name": "Science", "votes": 12},
       {"name": "Social Studies", "votes": 10},
       {"name": "Technical Education", "votes": 13},
-      {"name": "Music / Art", "votes": 12},
+      {"name": "Music", "votes": 7},
+      {"name": "Art", "votes": 5},
       {"name": "Physical Education", "votes": 15},
       {"name": "Foreign Language", "votes": 6}
     ]
@@ -65,10 +73,13 @@ const initialData = [
   {
     "_id": "eWRhpRV",
     "author": "server",
-    "title": "ES2015 vs ES6",
+    "title": "What languages do you speak?",
     "data": [
-      {"name": "ES2015", "votes": 5},
-      {"name": "ES6", "votes": 4}
+      {"name": "English", "votes": 50},
+      {"name": "French", "votes": 15},
+      {"name": "Spanish", "votes": 20},
+      {"name": "German", "votes": 10},
+      {"name": "Italian", "votes": 5}
     ]
   },
   {

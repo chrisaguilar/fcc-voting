@@ -9,7 +9,6 @@ const bodyParser = require('body-parser'),
 const app  = express(),
       port = process.env.PORT || 8080;
 
-require('dotenv').load();
 require('./app/config/passport')(passport);
 
 mongoose.connect(process.env.MONGO_URI);

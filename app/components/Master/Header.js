@@ -24,7 +24,7 @@ export default class Head extends React.Component {
                 </IndexLinkContainer>
                 {
                   this.props.isLoggedIn ? (
-                    <LinkContainer to={{pathname: `/user/${this.props.user._id}`}}>
+                    <LinkContainer to={{pathname: `/user`}}>
                       <NavItem>My Polls</NavItem>
                     </LinkContainer>
                   ) : ("")

@@ -4,7 +4,7 @@ import { Grid, Row, Col, ListGroup, ListGroupItem, Glyphicon, Button, Modal } fr
 import { LinkContainer } from 'react-router-bootstrap';
 import axios from 'axios';
 
-import NewPollModal from '../components/Home/NewPollModal';
+import NewPollModal from '../components/NewPollModal';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -37,7 +37,8 @@ export default class Home extends React.Component {
       <Row className="text-center">
         <Col md={8} mdOffset={2} sm={8} smOffset={2}>
           <h1><strong>Free Code Camp Polls</strong></h1>
-          <ListGroup>
+          <h3>All Polls</h3>
+          <ListGroup style={{marginTop: "2em"}}>
             {!(this.state.polls == []) ?
               (
               poll_list
