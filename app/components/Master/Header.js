@@ -22,6 +22,9 @@ export default class Head extends React.Component {
                 <IndexLinkContainer to={{pathname: '/'}}>
                   <NavItem>Home</NavItem>
                 </IndexLinkContainer>
+                <LinkContainer to={{pathname: '/about'}}>
+                  <NavItem>About</NavItem>
+                </LinkContainer>
                 {
                   this.props.isLoggedIn ? (
                     <LinkContainer to={{pathname: `/user`}}>
