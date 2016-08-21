@@ -75,7 +75,7 @@ export default class NewPollModal extends React.Component {
       this.props.isLoggedIn ? (
         <ListGroupItem className="text-center"style={{padding: "0"}}>
           <Button bsStyle="primary" block style={{borderTopRightRadius: "0", borderTopLeftRadius: "0"}} onClick={this.open}>
-            <Glyphicon glyph="plus" />
+            <strong><Glyphicon glyph="plus" /> Add Poll</strong>
           </Button>
           <Modal show={this.state.showModal} onHide={this.close}>
             <Modal.Header closeButton>
